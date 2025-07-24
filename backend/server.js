@@ -6,8 +6,13 @@ require("dotenv").config(); // .env file ko load karne ke liye
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const corsOptions = {
+  origin: "https://development-to-do-list-mern-1.onrender.com", // Yahan apne live frontend ka URL daalein
+  optionsSuccessStatus: 200,
+};
+
 // Middlewares
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json()); // Body se JSON parse karne ke liye
 
 // MongoDB se connect karein

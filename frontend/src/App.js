@@ -7,9 +7,10 @@ function App() {
   const [text, setText] = useState("");
 
   // Component load hone par todos fetch karein
+  const API_BASE_URL = "https://development-to-do-list-mern.onrender.com";
   useEffect(() => {
     axios
-      .get("/api/todos")
+      .get(`${API_BASE_URL}/api/todos`)
       .then((res) => setTodos(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -19,7 +20,7 @@ function App() {
     e.preventDefault();
     if (!text.trim()) return; // Khali todo na add ho
     axios
-      .post("/api/todos", { text })
+      .post(`${API_BASE_URL}/api/todos`, { text })
       .then((res) => {
         setTodos([...todos, res.data]);
         setText(""); // Input field clear karein
